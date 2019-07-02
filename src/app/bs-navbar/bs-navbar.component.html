@@ -1,0 +1,34 @@
+<mat-toolbar class="navbar">
+  <mat-toolbar-row class="navbar-row">
+    <mat-icon routerLink="/" aria-hidden="false">polymer</mat-icon>
+    <button mat-button class="button" [matMenuTriggerFor]="productMenu">Shop<mat-icon aria-hidden="false">expand_more</mat-icon></button>
+    
+    <span class="spacer"></span>
+    <a mat-button routerLink="/shopping-cart">
+      <span mat-button *ngIf="cart$ | async as cart" matBadge="{{cart.totalItemsCount}}" matBadgePosition="before" matBadgeOverlap="false" matBadgeColor="accent">Shopping Cart</span></a>
+    <ng-template #anonymousUser>
+      <a mat-button routerLink="/login">Login</a>
+    </ng-template> 
+    <button *ngIf="auth.user$ | async as user; else anonymousUser" mat-button class="button" [matMenuTriggerFor]="userMenu">{{ user.displayName }}<mat-icon aria-hidden="false">expand_more</mat-icon></button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-menu role="list" #userMenu="matMenu">
+  <!-- <a mat-menu-item role="listitem" routerLink="/my/orders">My Orders</a> -->
+  <a mat-menu-item routerLink="/admin/orders">Manage Orders</a>
+  <a mat-menu-item routerLink="/admin/products">Manage Products</a>
+  <a mat-menu-item (click)="logout()">Log Out</a>
+</mat-menu>
+
+<mat-menu role="list" #productMenu="matMenu">
+  <a mat-menu-item role="listitem" routerLink="/products">Shop All</a>
+  <a 
+    mat-menu-item 
+    role="listitem"
+    *ngFor="let b of brands$ | async"
+    routerLink="/products/"
+    [queryParams]="{ brand: b.payload.val().brand }"
+    >
+    {{ b.payload.val().brand }}
+  </a>
+</mat-menu>

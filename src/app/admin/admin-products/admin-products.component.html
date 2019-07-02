@@ -1,0 +1,42 @@
+<!-- <p>
+    <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+</p> -->
+
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<div class="mat-elevation-z8"> 
+    <mat-table [dataSource]="dataSource" matSort>
+    
+        <ng-container matColumnDef="brand">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Brand </mat-header-cell>
+            <mat-cell *matCellDef="let product"> {{ product.brand }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="model">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Model </mat-header-cell>
+            <mat-cell *matCellDef="let product"> {{ product.model }} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+            <mat-cell *matCellDef="let product"> {{ product.price | currency:'USD':'symbol' }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="available">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Available </mat-header-cell>
+            <mat-cell *matCellDef="let product"> {{ product.available }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let product"> <a [routerLink]="['/admin/products/', product.id]">Edit</a> </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let product; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+</div>

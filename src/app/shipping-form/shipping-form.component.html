@@ -1,0 +1,87 @@
+<form #f="ngForm" (ngSubmit)="placeOrder()">
+    <mat-form-field class="input input__half">
+      <input 
+        matInput 
+        #firstName="ngModel" 
+        [(ngModel)]="shipping.firstName" 
+        name="firstName" 
+        id="firstName" 
+        type="text"
+        placeholder="First Name"
+        required>
+      <mat-error *ngIf="firstName.touched && firstName.invalid">
+        First name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input input__half">
+      <input 
+        matInput 
+        #lastName="ngModel" 
+        [(ngModel)]="shipping.lastName" 
+        name="lastName" 
+        id="lastName" 
+        type="text"
+        placeholder="Last Name"
+        required>
+      <mat-error *ngIf="lastName.touched && lastName.invalid">
+        Last name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input">
+      <input 
+        matInput 
+        #addressOne="ngModel" 
+        [(ngModel)]="shipping.addressOne" 
+        name="addressOne" 
+        id="addressOne" 
+        type="text"
+        placeholder="Address 1"
+        required>
+      <mat-error *ngIf="addressOne.touched && addressOne.invalid">
+        Address is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input">
+      <input 
+        matInput 
+        #addressTwo="ngModel" 
+        [(ngModel)]="shipping.addressTwo" 
+        name="addressTwo" 
+        id="addressTwo" 
+        type="text"
+        placeholder="Address 2">
+    </mat-form-field>
+
+    <mat-form-field class="input input__three-quarters">
+      <input 
+        matInput 
+        #city="ngModel" 
+        [(ngModel)]="shipping.city" 
+        name="city" 
+        id="city" 
+        type="text"
+        placeholder="City"
+        required>
+      <mat-error *ngIf="city.touched && city.invalid">
+        City is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input input__quarter">
+      <mat-label>State</mat-label>
+      <mat-select 
+        #state="ngModel" 
+        [(ngModel)]="shipping.state" 
+        name="state" 
+        id="state">
+        <mat-option *ngFor="let s of states$ | async" [value]="s.key">
+          {{ s.payload.val().state }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <button [disabled]="!f.valid" mat-raised-button class="primary">Place Order</button>
+  </form>

@@ -1,0 +1,49 @@
+<div class="background"></div>
+
+<button mat-fab color="accent" class="filter" (click)="drawer.toggle()">
+  <mat-icon aria-hidden="false">filter_list</mat-icon>
+</button>
+
+<mat-drawer-container class="container" >
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <product-filter [brand]="brand"></product-filter>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <mat-grid-list 
+      *ngIf="cart$ | async as cart"
+      [cols]="breakpoint"  
+      rowHeight="1:1.1"
+      (window:resize)="onResize($event)" 
+      gutterSize="15px">
+      <ng-container *ngFor="let p of filteredProducts; let i = index">
+        <mat-grid-tile class="outer"
+          *ngIf="p.available && p.model"
+          colspan="1">
+          <product-card [product]="p" [shopping-cart]="cart"></product-card>
+        </mat-grid-tile>
+      </ng-container>
+    </mat-grid-list>
+  </div>
+
+  <!-- <div class="content"> -->
+    <!-- <div class="row" *ngIf="cart$ | async as cart">
+      <ng-container *ngFor="let p of filteredProducts; let i = index">
+        <div class="col" *ngIf="p.available">
+            <product-card [product]="p" [shopping-cart]="cart"></product-card>
+        </div>
+      </ng-container>
+    </div> -->
+  <!-- </div> -->
+</mat-drawer-container>
+
+
+<!-- <mat-grid-list cols="4" *ngIf="cart$ | async as cart">
+  <ng-container *ngFor="let p of filteredProducts; let i = index">
+    <mat-grid-tile
+      *ngIf="p.available"
+      colspan="1">
+      <product-card [product]="p" [shopping-cart]="cart"></product-card>
+    </mat-grid-tile>
+  </ng-container>
+</mat-grid-list> -->

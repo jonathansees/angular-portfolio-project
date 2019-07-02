@@ -1,0 +1,23 @@
+.row {
+    margin-top: 50px;
+}
+
+.input {
+    width: 100%;
+
+    &__quarter {
+        width: 25%;
+    }
+
+    &__half {
+        width: 50%;
+    }
+
+    &__three-quarters {
+        width: 75%;
+    }
+}
+
+button {
+    margin-right: 8px;
+}

@@ -1,0 +1,28 @@
+.container {
+    padding: 0;
+    background-color: transparent;
+}
+
+.sidenav-content {
+    background-color: transparent;
+    padding: 0 15px 30px 15px;
+}
+
+.sidenav {
+    min-width: 15vw;
+    background-color: transparent;
+}
+
+.outer {
+    background-color: white;
+}
+
+.filter {
+    background-color: #ed8a63;
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, 50%);
+    z-index: 100;
+    outline: 0;
+}

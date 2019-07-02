@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <mat-form-field class="input">
+        <mat-label>Brand</mat-label>
+        <mat-select 
+          #brand="ngModel" 
+          [(ngModel)]="product.brand" 
+          name="brand" 
+          id="brand"
+          disabled>
+          <mat-option *ngFor="let b of brands$ | async" [value]="b.payload.val().brand">
+            {{b.payload.val().brand }}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="price.errors.required">
+          Brand is <strong>required</strong>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <input 
+          matInput 
+          #model="ngModel" 
+          [(ngModel)]="product.model" 
+          name="model" 
+          id="model" 
+          type="text"
+          placeholder="Model"
+          required
+          disabled>
+        <mat-error *ngIf="model.touched && model.invalid">
+          Model is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input input__half">
+        <span matPrefix>$ &nbsp;</span>
+        <input
+          matInput
+          #price="ngModel" 
+          [(ngModel)]="product.price" 
+          name="price" 
+          id="price" 
+          type="number"
+          placeholder="Price"
+          required 
+          [min]="0">
+        <mat-error *ngIf="price.touched && price.invalid">Price is <strong>required</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input input__half">
+        <mat-label>Available</mat-label>
+        <mat-select 
+          #available="ngModel" 
+          [(ngModel)]="product.available" 
+          name="available" 
+          id="available">
+          <mat-option [value]=true>
+            Yes
+          </mat-option>
+          <mat-option [value]=false>
+            No
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="price.errors.required">
+          Brand is <strong>required</strong>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <input 
+          matInput
+          #imageUrl="ngModel" 
+          [(ngModel)]="product.imageUrl" 
+          name="imageUrl" 
+          id="imageUrl" 
+          type="text" 
+          placeholder="Image URL"
+          required 
+          url
+          disabled>
+        <mat-error *ngIf="imageUrl.touched && imageUrl.invalid">Image URL is <strong>required</strong></mat-error>
+      </mat-form-field>
+      
+      <button mat-raised-button class="primary">Save</button>
+      <button mat-raised-button color="warn" routerLink="/admin/products">Cancel</button>
+      
+      <!-- <button mat-raised-button color="warn" (click)="delete()">Delete</button> -->
+    </form>
+  </div>
+  <div class="col-md-6">
+    <product-card [product]="product" [show-actions]="false"></product-card>
+  </div>
+</div>

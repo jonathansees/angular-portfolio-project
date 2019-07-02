@@ -1,0 +1,17 @@
+<div class="row">
+  <button
+    (click)="removeFromCart()"
+    mat-flat-button
+    class="primary">
+    -
+  </button>
+  <div class="quantity">
+    {{ shoppingCart.getQuantity(product) }} in cart
+  </div>
+  <button 
+    (click)="addToCart()"
+    mat-flat-button
+    class="primary">
+    +
+  </button>
+</div>

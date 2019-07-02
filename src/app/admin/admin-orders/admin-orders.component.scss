@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.order-row:not(.expanded-row):hover {
+  background: #efefef;
+}
+
+tr.order-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.order-row td {
+  border-bottom-width: 0;
+}
+
+.order-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.order-description-attribution {
+  opacity: 0.5;
+}

@@ -1,0 +1,23 @@
+<mat-list role="list">
+  <mat-list-item 
+    role="listitem"
+    matRipple
+    routerLink="/products/"
+    class="list-item"
+    [class.active]="!brand">
+    &nbsp;&nbsp;&nbsp;&nbsp;All Brands
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <ng-container *ngFor="let b of brands$ | async">
+    <mat-list-item 
+      role="listitem"
+      matRipple
+      routerLink="/products/"
+      [queryParams]="{ brand: b.payload.val().brand }"
+      class="list-item"
+      [class.active]="brand === b.payload.val().brand">
+      &nbsp;&nbsp;&nbsp;&nbsp;{{ b.payload.val().brand }}
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </ng-container>
+</mat-list>

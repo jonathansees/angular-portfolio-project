@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    padding-top: 15vh;
+    padding-bottom: 75px;
+}
+
+$tan: #c9af98;
+$chreme: #f8f8f8;
+$blue: #3a4660;
+$peach: #ed8a63;
+$brown: #845007;
+
+button, a {
+    outline: none;
+
+    &.primary {
+        background-color: $blue;
+        color: white;
+        text-decoration: none;
+    }
+
+    &.secondary {
+        background-color: $peach;
+        color: white;
+    }
+}
+
+.background {
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba(201, 175, 152, 0.5), 
+        rgba(132, 80, 7, 0.5)),
+        url('https://images.unsplash.com/photo-1517519610343-021766b185c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80');
+    background-size: cover;
+    background-position: center; 
+}

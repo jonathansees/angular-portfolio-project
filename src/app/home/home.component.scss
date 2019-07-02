@@ -1,0 +1,162 @@
+// .background {
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     width: 100vw;
+//     height: 100vh;
+//     background-image: url('https://images.unsplash.com/photo-1517519610343-021766b185c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80');
+    
+//     // background-image: url('https://images.unsplash.com/photo-1511318316897-47dc82cd9ebb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1779&q=80');
+//     // background-image: url('https://images.unsplash.com/photo-1519810409043-b6d44921bfa2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
+//     background-size: cover;
+//     background-position: center; 
+// }
+
+// .content {
+//     position: absolute;
+//     top: 25vh;
+//     height: 25vh;
+//     width:100vw;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: space-between;
+
+//     &__title {
+//         color: white;
+//     }
+
+//     &__button {
+//         height: 7vh;
+//         width: 20vw;
+
+//     }
+// }
+
+// .header {
+//     height: 100vh;
+//     width: 100vw;
+//     top: 0;
+//     left: 0;
+//     position: absolute;
+//     background-image: url('https://images.unsplash.com/photo-1517519610343-021766b185c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80');
+    
+//     // background-image: url('https://images.unsplash.com/photo-1511318316897-47dc82cd9ebb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1779&q=80');
+//     // background-image: url('https://images.unsplash.com/photo-1519810409043-b6d44921bfa2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
+//     background-size: cover;
+//     background-position: center; 
+// }
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.heading-primary {
+    color: #f8f8f8;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 60px;
+
+    &-main {
+        display: block;
+        font-size: 60px;
+        font-weight: 400;
+        letter-spacing: 35px;
+
+        animation: moveInLeft 1s ease-out;
+    }
+
+    &-sub {
+        display: block;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 17.4px;
+
+        animation: moveInRight 1s ease-out;
+    }
+
+    &-button {
+        color: #f8f8f8;
+        text-transform: uppercase;
+        letter-spacing: 17.4px;
+        padding: 5px 50px;
+        text-align: center;
+        display: inline-block;
+        transition: all .2s;
+        outline: none;
+
+        animation: moveInUp .75s .5s ease-out;
+        animation-fill-mode: backwards;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+        }
+
+        &:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+        }
+    }
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+// <div class="background">
+//   <div class="content">
+//     <div class="content__title">
+//         You miss 100% of everything...
+//     </div>
+//     <button class="content__button">
+
+//     </button>
+//   </div>
+// </div>
